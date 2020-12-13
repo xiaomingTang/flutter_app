@@ -1,0 +1,80 @@
+{
+  "message": {
+    "CarDecorate": {
+      "access": true,
+      "info": "ok",
+      "name": "趣改车App授权"
+    }
+  },
+  "code": 0,
+  "token": "c81ec710b737d01690939e97254cc6f5b07dd4bd2a8804283881b302df033b9e",
+  "user": {
+    "address": null,
+    "assembler_id": null,
+    "company_code": "12341234567",
+    "layout": 10,
+    "level": 2,
+    "manufacturer_id": null,
+    "mobile": null,
+    "name": "",
+    "ratio": 1,
+    "role": 1,
+    "shop_id": 34377,
+    "upper_agent": "18320959250",
+    "username": "12341234567",
+    "id": 32947,
+    "is_exp": false,
+    "is_single_user": false,
+    "shop": {
+      "_id": 34377,
+      "adv_group_id": 15,
+      "broker_id": 1,
+      "car_brand_ids": [
+        3222
+      ],
+      "car_decorate_vendor_ids": [],
+      "city": "深圳市",
+      "contactor": "",
+      "content": null,
+      "dist": "",
+      "feature_needed": 2,
+      "features": [
+        "12341234567",
+        "zishe",
+        "dwdread",
+        "color",
+        "tianhai"
+      ],
+      "last_notify_time": null,
+      "loc": [
+        22.545311,
+        114.067262
+      ],
+      "manager_id": 33347,
+      "mobile": "12341234567",
+      "name": "配件优选",
+      "not_features": [
+        "plat_dft",
+        "dft_gl8"
+      ],
+      "province": "广东省",
+      "rating": 5,
+      "service_phone": "",
+      "state": 0,
+      "street": "",
+      "wx_share_desc": "",
+      "wx_share_title": "",
+      "id": 34377
+    },
+    "shop_address": null,
+    "user_token": {
+      "_id": 60445,
+      "client_ip": "120.41.35.57",
+      "device_id": "76a8fac4160269cb",
+      "mob": null,
+      "token": "c81ec710b737d01690939e97254cc6f5b07dd4bd2a8804283881b302df033b9e",
+      "is_boss": false,
+      "nick_name": null
+    }
+  }
+}

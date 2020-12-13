@@ -1,0 +1,4 @@
+{
+  "@JsonKey(name: 'car_brand_id') int": "carBrandId",
+  "@JsonKey(name: 'adm_id') int": "admId"
+}

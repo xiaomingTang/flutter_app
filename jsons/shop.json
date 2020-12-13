@@ -1,0 +1,36 @@
+{
+  "_id": 34377,
+  "city": "深圳市",
+  "contactor": "",
+  "content": null,
+  "dist": "",
+  "features": [
+    "12341234567",
+    "zishe",
+    "dwdread",
+    "color",
+    "tianhai"
+  ],
+  "loc": [
+    22.545311,
+    114.067262
+  ],
+  "mobile": "12341234567",
+  "name": "配件优选",
+  "province": "广东省",
+  "rating": 5,
+  "state": 0,
+  "street": "",
+  "id": 34377,
+  "@JsonKey(name: 'adv_group_id') int": "advGroupId",
+  "@JsonKey(name: 'broker_id') int": "brokerId",
+  "@JsonKey(name: 'feature_needed') int": "featureNeeded",
+  "@JsonKey(name: 'manager_id') int": "managerId",
+  "@JsonKey(name: 'last_notify_time') String": "lastNotifyTime",
+  "@JsonKey(name: 'service_phone') String": "servicePhone",
+  "@JsonKey(name: 'wx_share_desc') String": "wxShareDesc",
+  "@JsonKey(name: 'wx_share_title') String": "wxShareTitle",
+  "@JsonKey(name: 'car_brand_ids') List<int>": "carBrandIds",
+  "@JsonKey(name: 'car_decorate_vendor_ids') List<int>": "carDecorateVendorIds",
+  "@JsonKey(name: 'not_features') List<String>": "notFeatures"
+}

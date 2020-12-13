@@ -1,0 +1,14 @@
+{
+  "id": -1,
+  "isContainer": true,
+  "parentId": -1,
+  "name": "根目录",
+  "brief": "根目录",
+  "picture": "",
+  "link": "",
+  "tags": [],
+  "section": "",
+  "userLevel": -1,
+  "state": 0,
+  "@JsonKey(name: 'children') List<WebTree>": "children"
+}

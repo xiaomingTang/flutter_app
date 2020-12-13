@@ -1,0 +1,7 @@
+{
+  "@import": "banner.dart",
+  "@import ": "nav.dart",
+  "@JsonKey(name: 'banners') List<Banner>": "banners",
+  "@JsonKey(name: 'navs') List<Nav>": "navs",
+  "@JsonKey(name: 'base_url') String": "baseUrl"
+}

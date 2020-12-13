@@ -1,0 +1,10 @@
+{
+  "id": 18549,
+  "name": "门店自己的栏目",
+  "link": "",
+  "picture": "/uploads/picture/20201016/picture/99258/cc3a5234721b8b7d6c8e4c35f6156f31.png",
+  "navigation": "SunnyCar",
+  "@JsonKey(name: 'is_vr') bool": "isVr",
+  "@JsonKey(name: 'nav_params') String": "navParams",
+  "@JsonKey(name: 'icon_uri') String": "iconUri"
+}
