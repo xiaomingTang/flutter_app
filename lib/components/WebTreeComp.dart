@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/components/TImageIcon.dart';
 import 'package:flutter_app/models/index.dart';
 import 'package:flutter_app/pages/Webview.dart';
-import 'package:flutter_app/pages/main.dart' as Pages;
 import 'package:flutter_app/utils/constants.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -61,7 +60,7 @@ class _WebTreeCompState extends State<WebTreeComp> {
                 ),
               );
             } else if (isLink) {
-              Pages.navOnWebview(
+              navOnWebview(
                 context: context,
                 path: link,
                 appBar: geneAppBar(

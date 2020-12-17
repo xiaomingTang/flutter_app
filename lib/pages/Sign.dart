@@ -11,35 +11,48 @@ class LoginRoute extends StatefulWidget {
 }
 
 class _LoginRouteState extends State<LoginRoute> {
-  TextEditingController _usernameController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final GlobalKey _formKey = GlobalKey<FormState>();
 
   // 用于登录时将登录按钮 disabled, 防止重复提交
   bool _isLogining = false;
   bool _passwordVisible = false;
   int _autoFocusField = 0;
-  GlobalKey _formKey = GlobalKey<FormState>();
+
+  String get _username {
+    return _usernameController.text ?? "";
+  }
+
+  String get _password {
+    return _passwordController.text ?? "";
+  }
+
+  bool get _isLoginAvailable {
+    return !_isLogining &&
+        checkUsernameAvailable(_username) == null &&
+        checkPasswordAvailable(_password) == null;
+  }
 
   @override
   void initState() {
     _usernameController.text = Global.profile.lastLogin;
-    if (_usernameController.text != null &&
-        _usernameController.text.isNotEmpty) {
+    if (_username.isNotEmpty) {
       _autoFocusField = 1;
     }
     super.initState();
   }
 
   Future<void> _submit(BuildContext context) async {
-    if (_isLogining) {
+    if (!_isLoginAvailable) {
       return;
     }
     setState(() {
       _isLogining = true;
     });
     User user = await Network(context).login(
-      _usernameController.text,
-      _passwordController.text,
+      _username,
+      _password,
     );
     setState(() {
       _isLogining = false;
@@ -51,7 +64,7 @@ class _LoginRouteState extends State<LoginRoute> {
 
   @override
   Widget build(BuildContext context) {
-    final node = FocusScope.of(context);
+    final _node = FocusScope.of(context);
     return Scaffold(
       appBar: AppBar(title: Text("登录")),
       body: SingleChildScrollView(
@@ -67,8 +80,11 @@ class _LoginRouteState extends State<LoginRoute> {
                   controller: _usernameController,
                   validator: checkUsernameAvailable,
                   textInputAction: TextInputAction.next,
+                  onChanged: (value) {
+                    setState(() {});
+                  },
                   onEditingComplete: () {
-                    node.nextFocus();
+                    _node.nextFocus();
                   },
                   decoration: InputDecoration(
                     labelText: "用户名/手机号/邮箱",
@@ -81,6 +97,9 @@ class _LoginRouteState extends State<LoginRoute> {
                   validator: checkPasswordAvailable,
                   obscureText: !_passwordVisible,
                   textInputAction: TextInputAction.done,
+                  onChanged: (value) {
+                    setState(() {});
+                  },
                   onEditingComplete: () {
                     _submit(context);
                   },
@@ -104,11 +123,10 @@ class _LoginRouteState extends State<LoginRoute> {
                 Padding(
                   padding: const EdgeInsets.only(top: 25),
                   child: ConstrainedBox(
-                    constraints: BoxConstraints.expand(height: 55.0),
-                    child: RaisedButton(
-                      color: _isLogining ? Colors.grey : Colors.blue,
-                      onPressed: () => _submit(context),
-                      textColor: Colors.white,
+                    constraints: BoxConstraints.expand(height: 48.0),
+                    child: ElevatedButton(
+                      onPressed:
+                          !_isLoginAvailable ? null : () => _submit(context),
                       child: Text(_isLogining ? "登录中..." : "登录"),
                     ),
                   ),

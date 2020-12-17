@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/components/DismissKeyboard.dart';
+import 'package:flutter_app/utils/log.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class Cart extends StatefulWidget {
@@ -7,10 +9,30 @@ class Cart extends StatefulWidget {
 }
 
 class _CartState extends State<Cart> {
-  int _state = 0;
+  TextEditingController _controller;
+  String get _text {
+    return _controller.text.trim();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _submit() {
+    logWarn(_controller.text);
+  }
 
   @override
   Widget build(BuildContext context) {
+    final _node = FocusScope.of(context);
     return RefreshIndicator(
       child: SingleChildScrollView(
         // 加了 constraints minHeight, 所以不需要 AlwaysScrollableScrollPhysics
@@ -25,15 +47,29 @@ class _CartState extends State<Cart> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("购物车"),
+                TextField(
+                  // 如果在 PageView + KeepAlivePage 中使用 autofocus
+                  // 页面在 KeepAlive 之后就不会 autofocus 了
+                  // 所以还是不用了
+                  controller: _controller,
+                  maxLines: 5,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Type whatever you want',
+                    contentPadding: EdgeInsets.all(8),
+                  ),
+                  onChanged: (value) {
+                    setState(() {});
+                  },
+                ),
+                if (_text.isNotEmpty) Text(_text),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    child: Text("Cart-$_state"),
+                    child: Text("提交"),
                     onPressed: () {
-                      setState(() {
-                        _state += 1;
-                      });
+                      _node.unfocus();
+                      _submit();
                     },
                   ),
                 ),

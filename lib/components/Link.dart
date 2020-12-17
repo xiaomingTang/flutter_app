@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/Webview.dart';
 
-import 'package:flutter_app/pages/main.dart' as Pages;
-
 class Link extends StatelessWidget {
   final String href;
   final Widget child;
@@ -12,7 +10,7 @@ class Link extends StatelessWidget {
   final bool openInWebview;
   final String title;
   // 仅在 openInWebview 为 true 时有效
-  final Pages.OnMessageCallback onMessage;
+  final OnMessageCallback onMessage;
 
   Link({
     @required this.href,
@@ -29,7 +27,7 @@ class Link extends StatelessWidget {
       child: child,
       onTap: () {
         if (openInWebview) {
-          Pages.navOnWebview(
+          navOnWebview(
             context: context,
             path: href,
             onMessage: onMessage,
