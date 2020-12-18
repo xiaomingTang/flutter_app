@@ -19,6 +19,8 @@ class _ImageIconState extends State<TImageIcon> {
     if (widget.src.isEmpty) {
       image = Image.asset(
         placeholder,
+        errorBuilder: (context, error, stackTrace) =>
+            Icon(Icons.image_not_supported),
         width: widget.width,
         height: widget.height,
         fit: BoxFit.cover,
@@ -27,6 +29,8 @@ class _ImageIconState extends State<TImageIcon> {
       image = FadeInImage.assetNetwork(
         placeholder: placeholder,
         image: widget.src,
+        placeholderErrorBuilder: (context, error, stackTrace) =>
+            Icon(Icons.image_not_supported),
         width: widget.width,
         height: widget.height,
         fit: BoxFit.cover,
